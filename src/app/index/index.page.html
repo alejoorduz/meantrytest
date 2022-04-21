@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Empleados</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <form #employeeform="ngForm" (ngSubmit)="addEmp(employeeform)">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Enter Name" name="name" [(ngModel)]="empService.selectedEmp.name">
+                    </div>
+                    <div class="form-group">
+                         <input type="text" class="form-control" placeholder="Office" name="office" [(ngModel)]="empService.selectedEmp.office">
+                     </div>
+                    <div class="form-group">
+                          <input type="text" class="form-control" placeholder="Position" name="position" [(ngModel)]="empService.selectedEmp.position">
+                    </div>
+                    <div class="form-group">
+                       <input type="number" class="form-control" placeholder="Salary" name="salary" [(ngModel)]="empService.selectedEmp.salary">
+                  </div>
+                  <ion-button color="warning" (click)="resetform(employeeform)">Clean</ion-button>
+                  <ion-button color="danger" type="submit">Save</ion-button>
+                </form>
+            </div>
+        </div>
+    </div>
+  
+    <div class="col-md-8">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                      Name
+                    </th>
+                    <th>
+                      Position
+                    </th>
+                    <th>
+                      Office
+                    </th>
+                    <th>
+                      Operations
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let employee of empService.employees">
+                  <td> {{employee.name}}</td>
+                  <td> {{employee.position}}</td>
+                  <td> {{employee.office}}</td>  
+                  <!-- <td> {{employee.salary}}</td> -->
+                  <td>
+                      <ion-button color="primary" (click)="edit(employee)">Edit</ion-button>
+                      <ion-button color="primary" (click)="delete(employee._id)">Delete</ion-button>
+                  </td>
+              </tr>
+            </tbody>
+        </table>   
+    </div>
+  </div>
+  
+</ion-content>
