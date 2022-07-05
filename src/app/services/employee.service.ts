@@ -7,7 +7,8 @@ import { Employee } from "../models/employee";
 })
 export class EmployeeService {
 
-  URL_API = 'http://localhost:4000/api/emps'
+ //URL_API = 'http://localhost:4000'
+ URL_API = 'https://propyad.herokuapp.com/api/emps'
 
   selectedEmp: Employee = {
     name: '',

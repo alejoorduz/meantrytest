@@ -12,9 +12,26 @@ export class IndexPage implements OnInit {
   constructor(public empService: EmployeeService) { }
 
   ngOnInit() {
-    console.log('Server on port',3000)
-      this.getEmps();
+  //  console.log('Server on port',4000)
+    this.main();  
+    //this.getEmps();
     }
+
+ main(){
+   console.log("HAciendo la equis")
+      var row, column, norows =5;
+      for( row=0; row<norows; row++ ){ 
+          for( column=0; column<norows; column++ ){
+            if( (row == column) || (( row+column)==(norows-1)))
+               console.log("X");                             
+             else
+               console.log(" ");
+          }
+          console.log("\n");
+      }
+      return 0;
+  }
+
 
     getEmps(){
         this.empService.getEmp().subscribe(
